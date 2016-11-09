@@ -17,7 +17,7 @@
       <h3>All Tweets</h3>
       {% for tweet in tweets %}
       <div class="tweet-block">
-        <p class="tweet-name">{{tweet.name}}</p>
+        <li><a href="/users/{{tweet.name}}" class="tweet-name">{{tweet.name}}</a></li>
         <li>{{tweet.content}}</li>
       </div>
       {% endfor %}
