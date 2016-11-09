@@ -5,7 +5,7 @@ const nunjucks = require('nunjucks');
 const routes = require('./routes/');
 
 app.listen(port, function() {
-  console.log('Server listening on port' + port);
+  console.log('Server listening on port ' + port);
 });
 
 app.set('view engine', 'html'); // have res.render work with html files
@@ -18,3 +18,4 @@ app.use('/', function(req, res, next) {
 });
 
 app.use('/', routes);
+app.use(express.static('public'));
