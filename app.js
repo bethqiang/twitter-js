@@ -4,6 +4,7 @@ const port = 3000;
 const nunjucks = require('nunjucks');
 const routes = require('./routes/');
 const bodyParser = require('body-parser');
+const socketio = require('socket.io');
 
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render); // when giving html files to res.render, tell it to use nunjucks
@@ -21,9 +22,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // start server
-app.listen(port, function() {
+const server = app.listen(port, function() {
   console.log('Server listening on port ' + port);
 });
 
+// socket.io needs to be given a server instance
+// the io object provides all server-side socket functionality
+const io = socketio.listen(server);
+
 app.use(express.static('public'));
-app.use('/', routes);
+app.use('/', routes(io));

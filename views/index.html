@@ -3,7 +3,7 @@
 {% block content %}
   
   <div class="page-header">
-    <h1>Welcome to Twitter.js, Nimit!</h1>
+    <h1>Welcome to Twitter.js!</h1>
   </div>
 
   {% if showForm %}
@@ -21,19 +21,20 @@
   <div class="row">
     <div class="col-xs-3">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
-      <b>Nimit Maru</b><br>
+      <b>You</b><br>
       100 followers
     </div>
     <div class="col-xs-9">
     
       <!-- display tweets here -->
-      <h3>All Tweets</h3>
+      <div id="tweets">
       {% for tweet in tweets %}
       <div class="tweet-block">
         <li><a href="/users/{{tweet.name}}" class="tweet-name">{{tweet.name}}</a></li>
-        <li>{{tweet.content}}</li>
+        <li><a href="/tweets/{{tweet.id}}">{{tweet.text}}</a></li>
       </div>
       {% endfor %}
+      </div>
       
     </div>
   </div>

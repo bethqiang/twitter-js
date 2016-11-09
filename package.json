@@ -13,7 +13,8 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^4.16.6",
-    "nunjucks": "^3.0.0"
+    "nunjucks": "^3.0.0",
+    "socket.io": "^1.5.1"
   },
   "devDependencies": {
     "volleyball": "^1.4.1"

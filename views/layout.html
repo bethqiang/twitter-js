@@ -78,5 +78,23 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // Load the socket.io library above, then connect to the server.
+      // Because the socket.io server is being run on the same server as your 
+      // Express instance, you can connect() without any arguments.
+      var socket = io.connect();
+      socket.on('connect', function(){
+        console.log('connected to server via WebSockets!');
+      });
+      // best practice with jQuery: find selection once, not every time a func runs
+      let $tweets = $('#tweets');
+      // When 'new_tweet' events are fired, do something with the packaged tweet
+      socket.on('new_tweet', function (tweet) {
+        $tweets.append('<div class="tweet-block"><li><a href="/users/' + tweet.name + '" class="tweet-name">' + tweet.name + '</a></li><li><a href="/tweets/' + tweet.id + '">' + tweet.text + '</a></li></div>');
+      });
+    </script>
+
   </body>
 </html>
