@@ -58,6 +58,10 @@ code {
   font-weight: bold;
 }
 
+form {
+  margin-bottom: 40px;
+}
+
 .tweet-block {
   margin: 15px 0;
 }

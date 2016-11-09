@@ -5,7 +5,7 @@ const tweetBank = require('../tweetBank');
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render('index', {tweets: tweets} );
+  res.render('index', {tweets: tweets, showForm: true} );
 });
 
 // route to get all tweets from a single user
@@ -20,6 +20,14 @@ router.get('/tweets/:id', function(req, res) {
   let id = Number(req.params.id);
   let tweetByID = tweetBank.find( {id: id} );
   res.render( 'index', { tweets: tweetByID } );
+});
+
+// route to post a tweet
+router.post('/tweets', function(req, res) {
+  let name = req.body.name;
+  let text = req.body.text;
+  tweetBank.add(name, text);
+  res.redirect('/');
 });
 
 module.exports = router;
