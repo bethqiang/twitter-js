@@ -92,7 +92,7 @@
       let $tweets = $('#tweets');
       // When 'new_tweet' events are fired, do something with the packaged tweet
       socket.on('new_tweet', function (tweet) {
-        $tweets.append('<div class="tweet-block"><li><a href="/users/' + tweet.name + '" class="tweet-name">' + tweet.name + '</a></li><li><a href="/tweets/' + tweet.id + '">' + tweet.text + '</a></li></div>');
+        $tweets.prepend('<div class="tweet-block"><img><div class="content"><p class="by"><a href="/users/' + tweet.name + '">' + tweet.name + '</a></p><p><a href="/tweets/' + tweet.id + '">' + tweet.content + '</a></p></div></div>');
       });
     </script>
 

@@ -28,11 +28,20 @@
     
       <!-- display tweets here -->
       <div id="tweets">
-      {% for tweet in tweets %}
+      <!--{% for tweet in tweets %}
       <div class="tweet-block">
         <li><a href="/users/{{tweet.name}}" class="tweet-name">{{tweet.name}}</a></li>
         <li><a href="/tweets/{{tweet.id}}">{{tweet.text}}</a></li>
       </div>
+      {% endfor %}-->
+      {% for tweet in tweets | reverse %}
+        <div class="tweet-block">
+          <img src="{{ tweet.picture_url }}">
+          <div class="content">
+            <p class="by"><a href="/users/{{ tweet.name }}">{{tweet.name}}</a></p>
+            <p><a href="/tweets/{{ tweet.id }}">{{tweet.content}}</a></p>
+          </div>
+        </div>
       {% endfor %}
       </div>
       
